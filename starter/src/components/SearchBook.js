@@ -1,9 +1,9 @@
 // import { Link } from 'react-router-dom';
 
-const SearchBook = () => {
+const SearchBook = ({ setShowSearchpage }) => {
   return (
     <div className="open-search">
-      Add a book
+      <a onClick={() => setShowSearchpage(!setShowSearchpage)}>Add a book</a>
     </div>
   );
 };
