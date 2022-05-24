@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="app">
       {showSearchPage ? (
-        <Search />
+        <Search setShowSearchpage={updatePage} />
       ) : (
             <div className="list-books">
               <Header />
