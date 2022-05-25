@@ -1,7 +1,8 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-const Search = ({ setShowSearchpage }) => {
+const Search = ({ setShowSearchpage, books }) => {
   const [query, setQuery] = useState("");
 
   const updateQuery = (query) => {
@@ -11,12 +12,13 @@ const Search = ({ setShowSearchpage }) => {
   return (
     <div className="search-books">
     <div className="search-books-bar">
-      <a
+      <Link
+        to={"/"}
         className="close-search"
         onClick={() => setShowSearchpage(setShowSearchpage)}
       >
         Close
-      </a>
+      </Link>
       <div className="search-books-input-wrapper">
         <input
           type="text"
@@ -27,7 +29,7 @@ const Search = ({ setShowSearchpage }) => {
       </div>
     </div>
     <div className="search-books-results">
-      <ol className="books-grid">{console.log(query)}</ol>
+      <ol className="books-grid">{console.log(books)}</ol>
     </div>
   </div>
   );
