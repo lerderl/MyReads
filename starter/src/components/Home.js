@@ -6,13 +6,13 @@ import SearchBook from "./SearchBook";
 import WantToRead from "./WantToRead";
 import CurrentlyReading from "./CurrentlyReading";
 
-const Home = ({ setShowSearchpage }) => {
+const Home = ({ setShowSearchpage, books, updateBook }) => {
   return (
     <div className="list-books">
       <Header />
       <div className="list-books-content">
         <div>
-          <WantToRead />
+          <WantToRead books={books} updateBook={updateBook} />
           <CurrentlyReading />
           <Read />
         </div>
@@ -23,6 +23,8 @@ const Home = ({ setShowSearchpage }) => {
 };
 
 Home.propTypes = {
+  books: PropTypes.array.isRequired,
+  updateBook: PropTypes.func.isRequired,
   setShowSearchpage: PropTypes.func.isRequired
 };
 

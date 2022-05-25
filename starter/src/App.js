@@ -26,11 +26,6 @@ function App() {
   const updateBook = (book, shelf) => {
     BooksAPI.update(book, shelf);
     setBooks(books.filter(b => b.id !== book.id).concat(...book, shelf));
-    // setBooks(prevBook => ({
-    //   books: prevBook.books.filter(_book => {
-    //     return _book.id !== book.id
-    //   }).concat({...book, shelf})
-    // }));
   };
 
   return (
@@ -42,7 +37,7 @@ function App() {
             } />
           ) : (
             <Route path="/" element={
-              <Home setShowSearchpage={updatePage} />
+              <Home setShowSearchpage={updatePage} books={books} updateBook={updateBook} />
             } />
           )
         }

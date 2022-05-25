@@ -44,7 +44,7 @@ const Search = ({ setShowSearchpage, books, updateBook }) => {
                   ></div>
                   <div className="book-shelf-changer">
                     <select
-                      value={displayBooks.map(book => book === books ? book.shelf = book : book.shelf = 'none')}
+                      value={book.shelf}
                       onChange={e => updateBook(book, e.target.value)}
                     >
                       <option value="none" disabled>Move to...</option>
