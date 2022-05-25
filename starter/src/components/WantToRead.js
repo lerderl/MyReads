@@ -2,7 +2,7 @@ const WantToRead = () => {
   return (
     <div className="bookshelf">
       <h2 className="bookshelf-title">Want to Read</h2>
-      <div className="bookshelf-books">
+      {/* <div className="bookshelf-books">
         <ol className="books-grid">
           <li>
             <div className="book">
@@ -67,7 +67,7 @@ const WantToRead = () => {
             </div>
           </li>
         </ol>
-      </div>
+      </div> */}
     </div>
   );
 };
