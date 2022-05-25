@@ -22,13 +22,23 @@ function App() {
 
     getBooks();
   }, []);
+  
+  const updateBook = (book, shelf) => {
+    BooksAPI.update(book, shelf);
+    setBooks(books.filter(b => b.id !== book.id).concat(...book, shelf));
+    // setBooks(prevBook => ({
+    //   books: prevBook.books.filter(_book => {
+    //     return _book.id !== book.id
+    //   }).concat({...book, shelf})
+    // }));
+  };
 
   return (
     <div className="app">
       <Routes>
         {showSearchPage ? (
           <Route path="/search" element={
-              <Search setShowSearchpage={updatePage} books={books} />
+              <Search setShowSearchpage={updatePage} books={books} updateBook={updateBook} />
             } />
           ) : (
             <Route path="/" element={

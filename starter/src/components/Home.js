@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import Read from "./Read";
 import Header from "./Header";
 import SearchBook from "./SearchBook";
@@ -18,6 +20,10 @@ const Home = ({ setShowSearchpage }) => {
       <SearchBook setShowSearchpage={setShowSearchpage} />
     </div>
   );
+};
+
+Home.propTypes = {
+  setShowSearchpage: PropTypes.func.isRequired
 };
 
 export default Home;

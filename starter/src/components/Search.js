@@ -2,14 +2,14 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const Search = ({ setShowSearchpage, books }) => {
-  const [query, setQuery] = useState("");
+const Search = ({ setShowSearchpage, books, updateBook }) => {
+  const [query, setQuery] = useState('');
 
   const updateQuery = (query) => {
     setQuery(query);
   };
 
-  const displayBooks = query === "" ? books : books.filter(book => book.title.toLowerCase().includes(query.toLowerCase()))
+  const displayBooks = query === '' ? books : books.filter(book => book.title.toLowerCase().includes(query.toLowerCase()))
 
   return (
     <div className="search-books">
@@ -32,7 +32,6 @@ const Search = ({ setShowSearchpage, books }) => {
     </div>
     <div className="search-books-results">
       <ol className="books-grid">
-        {console.log(books)}
         {query === "" ? (
           <div></div>
         ) : (displayBooks.map(book => (
@@ -44,13 +43,12 @@ const Search = ({ setShowSearchpage, books }) => {
                     style={{width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}
                   ></div>
                   <div className="book-shelf-changer">
-                    <select>
-                      <option value="none" disabled>
-                        Move to...
-                      </option>
-                      <option value="currentlyReading">
-                        Currently Reading
-                      </option>
+                    <select
+                      value={displayBooks.map(book => book === books ? book.shelf = book : book.shelf = 'none')}
+                      onChange={e => updateBook(book, e.target.value)}
+                    >
+                      <option value="none" disabled>Move to...</option>
+                      <option value="currentlyReading">Currently Reading</option>
                       <option value="wantToRead">Want to Read</option>
                       <option value="read">Read</option>
                       <option value="none">None</option>
@@ -70,7 +68,9 @@ const Search = ({ setShowSearchpage, books }) => {
 };
 
 Search.propTypes = {
-  setShowSearchpage: PropTypes.func.isRequired
+  books: PropTypes.array.isRequired,
+  updateBook: PropTypes.func.isRequired,
+  setShowSearchpage: PropTypes.func.isRequired,
 };
 
 export default Search;
