@@ -23,7 +23,7 @@ const CurrentlyReading = ({ books, updateBook }) => {
 
 CurrentlyReading.propTypes = {
   books: PropTypes.array.isRequired,
-  updateBook: PropTypes.func.isRequired
+  updateBook: PropTypes.func
 };
 
 export default CurrentlyReading;

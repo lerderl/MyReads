@@ -22,17 +22,17 @@ function App() {
     };
 
     getBooks();
-  }, []);
+  }, [books]);
 
   const updateBook = (book, shelf) => {
     BooksAPI.update(book, shelf);
-    setBooks(books.filter(b => b.id !== book.id).concat(...book, shelf));
+    setBooks(books.filter(b => b.id !== book.id));
   };
 
-  const updateQuery = (query, maxResults) => {
+  const updateQuery = (query) => {
     setQuery(query);
     BooksAPI
-      .search(query, maxResults)
+      .search(query, 30)
       .then(res => {
         if (Array.isArray(res)) {
           setBooks(res.filter(r => r.authors !== undefined && r.imageLinks !== undefined));

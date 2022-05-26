@@ -24,7 +24,7 @@ const Home = ({ setShowSearchpage, books, updateBook }) => {
 
 Home.propTypes = {
   books: PropTypes.array.isRequired,
-  updateBook: PropTypes.func.isRequired,
+  updateBook: PropTypes.func,
   setShowSearchpage: PropTypes.func.isRequired
 };
 

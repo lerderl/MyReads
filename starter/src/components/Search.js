@@ -44,7 +44,7 @@ const Search = ({ setShowSearchpage, books, updateBook, query, updateQuery }) =>
 Search.propTypes = {
   books: PropTypes.array.isRequired,
   query: PropTypes.string.isRequired,
-  updateBook: PropTypes.func.isRequired,
+  updateBook: PropTypes.func,
   updateQuery: PropTypes.func.isRequired,
   setShowSearchpage: PropTypes.func.isRequired,
 };

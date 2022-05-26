@@ -23,7 +23,7 @@ const WantToRead = ({ books, updateBook }) => {
 
 WantToRead.propTypes = {
   books: PropTypes.array.isRequired,
-  updateBook: PropTypes.func.isRequired
+  updateBook: PropTypes.func
 };
 
 export default WantToRead;
