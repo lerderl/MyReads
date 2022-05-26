@@ -93,4 +93,10 @@ This repository is the starter code for _all_ Udacity students. Therefore, we mo
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 
-
+          books.forEach((book) => {
+            booksOnShelf.forEach((x) => {
+              if (x.id === book.id) {
+                book.shelf = x.shelf;
+              }
+            });
+          });

@@ -38,7 +38,7 @@ function App() {
           setBooks(res.filter(r => r.authors !== undefined && r.imageLinks !== undefined));
         } else {
           setBooks([]);
-        }
+        };
       })
   };
 
