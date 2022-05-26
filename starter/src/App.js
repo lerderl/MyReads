@@ -30,8 +30,16 @@ function App() {
   };
 
   const updateQuery = (query, maxResults) => {
-    BooksAPI.search(query, maxResults);
     setQuery(query);
+    BooksAPI
+      .search(query, maxResults)
+      .then(res => {
+        if (Array.isArray(res)) {
+          setBooks(res.filter(r => r.authors !== undefined && r.imageLinks !== undefined));
+        } else {
+          setBooks([]);
+        }
+      })
   };
 
   return (

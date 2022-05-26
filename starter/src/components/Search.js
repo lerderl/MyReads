@@ -27,7 +27,6 @@ const Search = ({ setShowSearchpage, books, updateBook, query, updateQuery }) =>
     </div>
     <div className="search-books-results">
       <ol className="books-grid">
-        {console.log(books)}
         {query === "" ? (
           <div></div>
         ) : (displayBooks.map(book => (
