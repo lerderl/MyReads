@@ -14,7 +14,7 @@ const Home = ({ setShowSearchpage, books, updateBook }) => {
         <div>
           <WantToRead books={books} updateBook={updateBook} />
           <CurrentlyReading books={books} updateBook={updateBook} />
-          <Read />
+          <Read books={books} updateBook={updateBook} />
         </div>
       </div>
       <SearchBook setShowSearchpage={setShowSearchpage} />

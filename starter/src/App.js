@@ -9,6 +9,7 @@ import Search from "./components/Search";
 function App() {
   const [showSearchPage, setShowSearchpage] = useState(false);
   const [books, setBooks] = useState([]);
+  const [query, setQuery] = useState('');
 
   const updatePage = (showSearchPage) => {
     setShowSearchpage(!showSearchPage);
@@ -22,10 +23,15 @@ function App() {
 
     getBooks();
   }, []);
-  
+
   const updateBook = (book, shelf) => {
     BooksAPI.update(book, shelf);
     setBooks(books.filter(b => b.id !== book.id).concat(...book, shelf));
+  };
+
+  const updateQuery = (query, maxResults) => {
+    BooksAPI.search(query, maxResults);
+    setQuery(query);
   };
 
   return (
@@ -33,7 +39,7 @@ function App() {
       <Routes>
         {showSearchPage ? (
           <Route path="/search" element={
-              <Search setShowSearchpage={updatePage} books={books} updateBook={updateBook} />
+              <Search setShowSearchpage={updatePage} books={books} updateBook={updateBook} query={query} updateQuery={updateQuery} />
             } />
           ) : (
             <Route path="/" element={
