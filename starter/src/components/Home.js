@@ -13,7 +13,7 @@ const Home = ({ setShowSearchpage, books, updateBook }) => {
       <div className="list-books-content">
         <div>
           <WantToRead books={books} updateBook={updateBook} />
-          <CurrentlyReading />
+          <CurrentlyReading books={books} updateBook={updateBook} />
           <Read />
         </div>
       </div>
