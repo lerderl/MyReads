@@ -10,6 +10,7 @@ function App() {
   const [showSearchPage, setShowSearchpage] = useState(false);
   const [books, setBooks] = useState([]);
   const [query, setQuery] = useState('');
+  const [displayBooks, setDisplayBooks] = useState([]);
 
   const updatePage = (showSearchPage) => {
     setShowSearchpage(!showSearchPage);
@@ -35,9 +36,9 @@ function App() {
       .search(query, 30)
       .then(res => {
         if (Array.isArray(res)) {
-          setBooks(res.filter(r => r.authors !== undefined && r.imageLinks !== undefined));
+          setDisplayBooks(res.filter(r => r.authors !== undefined && r.imageLinks !== undefined));
         } else {
-          setBooks([]);
+          setDisplayBooks([]);
         };
       })
   };
@@ -47,7 +48,7 @@ function App() {
       <Routes>
         {showSearchPage ? (
           <Route path="/search" element={
-              <Search setShowSearchpage={updatePage} books={books} updateBook={updateBook} query={query} updateQuery={updateQuery} />
+              <Search setShowSearchpage={updatePage} updateBook={updateBook} query={query} updateQuery={updateQuery} displayBooks={displayBooks} />
             } />
           ) : (
             <Route path="/" element={

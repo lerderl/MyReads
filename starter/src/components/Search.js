@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 
 import BookList from "./BookList";
 
-const Search = ({ setShowSearchpage, books, updateBook, query, updateQuery }) => {
-  const displayBooks = query === '' ? books : books.filter(book => book.title.toLowerCase().includes(query.toLowerCase()))
-
+const Search = ({ setShowSearchpage, displayBooks, updateBook, query, updateQuery }) => {
   return (
     <div className="search-books">
     <div className="search-books-bar">
@@ -42,7 +40,7 @@ const Search = ({ setShowSearchpage, books, updateBook, query, updateQuery }) =>
 };
 
 Search.propTypes = {
-  books: PropTypes.array.isRequired,
+  displayBooks: PropTypes.array.isRequired,
   query: PropTypes.string.isRequired,
   updateBook: PropTypes.func,
   updateQuery: PropTypes.func.isRequired,
