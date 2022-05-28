@@ -7,14 +7,9 @@ import * as BooksAPI from "./BooksAPI";
 import Search from "./components/Search";
 
 function App() {
-  const [showSearchPage, setShowSearchpage] = useState(false);
   const [books, setBooks] = useState([]);
   const [query, setQuery] = useState('');
   const [displayBooks, setDisplayBooks] = useState([]);
-
-  const updatePage = (showSearchPage) => {
-    setShowSearchpage(!showSearchPage);
-  };
 
   useEffect(() => {
     const getBooks = async () => {
@@ -46,16 +41,12 @@ function App() {
   return (
     <div className="app">
       <Routes>
-        {showSearchPage ? (
-          <Route path="/search" element={
-              <Search setShowSearchpage={updatePage} updateBook={updateBook} query={query} updateQuery={updateQuery} displayBooks={displayBooks} />
-            } />
-          ) : (
-            <Route path="/" element={
-              <Home setShowSearchpage={updatePage} books={books} updateBook={updateBook} />
-            } />
-          )
-        }
+        <Route path="/search" element={
+          <Search updateBook={updateBook} query={query} updateQuery={updateQuery} displayBooks={displayBooks} />
+        } />
+        <Route path="/" element={
+          <Home books={books} updateBook={updateBook} />
+        } />
       </Routes>
     </div>
   );

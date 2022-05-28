@@ -1,16 +1,15 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import BookList from "./BookList";
+import Book from "./Book";
 
-const Search = ({ setShowSearchpage, displayBooks, updateBook, query, updateQuery }) => {
+const Search = ({ displayBooks, updateBook, query, updateQuery }) => {
   return (
     <div className="search-books">
     <div className="search-books-bar">
       <Link
         to={"/"}
         className="close-search"
-        onClick={() => setShowSearchpage(setShowSearchpage)}
       >
         Close
       </Link>
@@ -29,7 +28,7 @@ const Search = ({ setShowSearchpage, displayBooks, updateBook, query, updateQuer
           <div></div>
         ) : (displayBooks.map(book => (
             <li key={book.id}>
-              <BookList book={book} updateBook={updateBook} />
+              <Book book={book} updateBook={updateBook} />
             </li>
           )
         ))}
@@ -44,7 +43,6 @@ Search.propTypes = {
   query: PropTypes.string.isRequired,
   updateBook: PropTypes.func,
   updateQuery: PropTypes.func.isRequired,
-  setShowSearchpage: PropTypes.func.isRequired,
 };
 
 export default Search;

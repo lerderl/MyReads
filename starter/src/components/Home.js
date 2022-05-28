@@ -1,23 +1,19 @@
 import PropTypes from "prop-types";
+import { Link } from 'react-router-dom';
 
-import Read from "./Read";
 import Header from "./Header";
-import SearchBook from "./SearchBook";
-import WantToRead from "./WantToRead";
-import CurrentlyReading from "./CurrentlyReading";
+import BookShelf from "./BookShelf";
 
-const Home = ({ setShowSearchpage, books, updateBook }) => {
+const Home = ({ books, updateBook }) => {
   return (
     <div className="list-books">
       <Header />
       <div className="list-books-content">
-        <div>
-          <WantToRead books={books} updateBook={updateBook} />
-          <CurrentlyReading books={books} updateBook={updateBook} />
-          <Read books={books} updateBook={updateBook} />
-        </div>
+        <BookShelf books={books} updateBook={updateBook} />
       </div>
-      <SearchBook setShowSearchpage={setShowSearchpage} />
+      <div className="open-search">
+        <Link to={"/search"}>Add a book</Link>
+      </div>
     </div>
   );
 };
@@ -25,7 +21,6 @@ const Home = ({ setShowSearchpage, books, updateBook }) => {
 Home.propTypes = {
   books: PropTypes.array.isRequired,
   updateBook: PropTypes.func,
-  setShowSearchpage: PropTypes.func.isRequired
 };
 
 export default Home;
