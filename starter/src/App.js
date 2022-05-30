@@ -18,11 +18,12 @@ function App() {
     };
 
     getBooks();
-  }, [books]);
+  }, []);
 
-  const updateBook = (book, shelf) => {
-    BooksAPI.update(book, shelf);
-    setBooks(books.filter(b => b.id !== book.id));
+  const updateBook = async (book, shelf) => {
+    await BooksAPI.update(book, shelf);
+    const updatedBooks = await BooksAPI.getAll();
+    setBooks(updatedBooks);
   };
 
   const updateQuery = (query) => {
@@ -30,7 +31,17 @@ function App() {
     BooksAPI
       .search(query, 30)
       .then(res => {
+        let filteredBooks = [];
+
         if (Array.isArray(res)) {
+          // console.log(books.map(book => book.shelf));
+          // console.log(res.shelf);
+          // console.log(res);
+          filteredBooks = books.map(book => {
+            if (!book.shelf) {
+              res.filter();
+            };
+          });
           setDisplayBooks(res.filter(r => r.authors !== undefined && r.imageLinks !== undefined));
         } else {
           setDisplayBooks([]);
