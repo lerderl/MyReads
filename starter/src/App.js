@@ -31,22 +31,22 @@ function App() {
     BooksAPI
       .search(query, 30)
       .then(res => {
-        let filteredBooks = [];
-
         if (Array.isArray(res)) {
-          // console.log(books.map(book => book.shelf));
-          // console.log(res.shelf);
-          // console.log(res);
-          filteredBooks = books.map(book => {
-            if (!book.shelf) {
-              res.filter();
-            };
+          res.forEach(r => {
+            books.forEach((book) => {
+              if(r.id === book.id) {
+                r.shelf = book.shelf                 
+              }
+            });
           });
           setDisplayBooks(res.filter(r => r.authors !== undefined && r.imageLinks !== undefined));
         } else {
           setDisplayBooks([]);
         };
       })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
