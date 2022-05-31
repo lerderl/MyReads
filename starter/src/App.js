@@ -35,7 +35,7 @@ function App() {
           res.forEach(r => {
             books.forEach((book) => {
               if(r.id === book.id) {
-                r.shelf = book.shelf                 
+                r.shelf = book.shelf
               }
             });
           });

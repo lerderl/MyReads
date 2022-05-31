@@ -16,7 +16,7 @@ const Search = ({ displayBooks, updateBook, query, updateQuery }) => {
       </Link>
       <div className="search-books-input-wrapper">
         <DebounceInput
-          minLength={5}
+          minLength={3}
           type="text"
           placeholder="Search by title, author, or ISBN"
           value={query}
