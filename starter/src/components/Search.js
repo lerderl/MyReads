@@ -41,10 +41,10 @@ const Search = ({ displayBooks, updateBook, query, updateQuery }) => {
 };
 
 Search.propTypes = {
-  displayBooks: PropTypes.array.isRequired,
-  query: PropTypes.string.isRequired,
   updateBook: PropTypes.func,
+  query: PropTypes.string.isRequired,
   updateQuery: PropTypes.func.isRequired,
+  displayBooks: PropTypes.array.isRequired
 };
 
 export default Search;

@@ -19,8 +19,8 @@ const Home = ({ books, updateBook }) => {
 };
 
 Home.propTypes = {
-  books: PropTypes.array.isRequired,
   updateBook: PropTypes.func,
+  books: PropTypes.array.isRequired,
 };
 
 export default Home;
